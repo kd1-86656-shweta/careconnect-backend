@@ -13,24 +13,26 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                // ❌ Disable CSRF (for APIs)
+                // Disable CSRF for APIs
                 .csrf(csrf -> csrf.disable())
 
-                // ❌ Disable session creation (THIS FIXES JSESSIONID)
+                // Stateless session (JWT-ready)
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
 
-                // ❌ Disable default login mechanisms
+                // Disable default login mechanisms
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
 
-                // ✅ Allow public endpoints
+                // Authorization rules
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/",                    // ✅ ROOT URL
                                 "/api/test/**",
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
