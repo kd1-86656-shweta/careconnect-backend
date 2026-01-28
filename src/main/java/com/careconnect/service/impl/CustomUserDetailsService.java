@@ -1,5 +1,4 @@
-package com.careconnect.service.Impl;
-
+package com.careconnect.service.impl;
 import com.careconnect.configuration.CustomUserDetails;
 import com.careconnect.model.User;
 import com.careconnect.repository.UserRepository;
@@ -25,4 +24,5 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new CustomUserDetails(user);
     }
 }
+
 

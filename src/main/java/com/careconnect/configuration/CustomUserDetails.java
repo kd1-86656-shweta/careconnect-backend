@@ -28,7 +28,8 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(user.getRole()));
+        //here need to put RoleAccess Properly
+        return List.of(new SimpleGrantedAuthority("User"));
     }
 
     @Override public boolean isAccountNonExpired() { return true; }

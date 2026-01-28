@@ -20,6 +20,11 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private long expiration;
 
+    public long getExpirationInSeconds() {
+        return expiration;
+    }
+
+
     private Key signingKey;
 
     @PostConstruct

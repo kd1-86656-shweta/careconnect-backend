@@ -1,0 +1,21 @@
+package com.careconnect.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ErrorResponse {
+
+    private String timestamp;
+    private int status;
+    private String error;
+    private String message;
+    private String path;
+    private String errorCode; // optional but enterprise-grade
+}
+
